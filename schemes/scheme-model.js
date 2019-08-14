@@ -6,11 +6,11 @@ function find() {
 function findById(id) {
   return db('schemes').where({ id }).first()
 }
-function findSteps(id) {
-  return db('steps as s')
-          .join('schemes', 'schemes.id', 's.id')
-          .select('s.id', 'schemes.scheme_name', 's.step_number', 's.instructions')
-          .where({ id })
+function findSteps(scheme_id) {
+    return db('schemes')
+        .join('steps', 'schemes.id', 'steps.scheme_id')
+        .select('schemes.scheme_name', 'steps.step_number', 'steps.instructions')
+        .where({scheme_id})
 }
 async function add(scheme) {
   const [ id ] = await db('schemes').insert(scheme)

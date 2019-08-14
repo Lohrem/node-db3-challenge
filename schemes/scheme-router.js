@@ -34,7 +34,6 @@ router.get('/:id/steps', async (req, res) => {
 
   try {
     const steps = await Schemes.findSteps(id)
-
     if (steps.length) {
       res.json(steps)
     } else {

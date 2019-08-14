@@ -8,13 +8,16 @@
   SELECT o.orderid, s.shippername, o.orderdate FROM orders as o
   join shippers as s
   on o.shipperid = s.shipperid
-  where o.orderdate < '1997/01/09'
+  where o.orderdate < '1997-01-09'
 ### Display all ProductNames and Quantities placed on order 10251. Sort by ProductName. Shows 3 records.
   SELECT od.orderid, od.quantity, p.productname from orderdetails as od
   join products as p
   on od.orderid = 10251
   order by p.productname
 ### Display the OrderID, CustomerName and the employee's LastName for every order. All columns should be labeled clearly. Displays 196 records.
+  select o.orderid, c.customername, e.lastname from orders as o
+  join customers as c on o.customerid = c.customerid
+  join employees as e on o.employeeid = e.employeeid
 
 ### (Stretch)  Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 9 records.
 
